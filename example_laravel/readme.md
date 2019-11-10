@@ -14,9 +14,22 @@ ___
 
 ## マイグレーション
 
+- ex.) ユーザテーブルを作成する
+
+```
+php artisan make:migration create_users_table --create=users
+```
+
 - ex.) ユーザテーブルにカラムを追加する
 
 ```
 php artisan make:migration add_votes_to_users_table --table=users
-php artisan make:migration add_points_to_users_table --table=users
+```
+
+## モデルの作成
+
+- 以下のコマンドで作成する
+
+```
+php artisan make:model Item
 ```
