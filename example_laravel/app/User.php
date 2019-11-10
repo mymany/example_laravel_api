@@ -8,6 +8,11 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    public function items()
+    {
+        return $this->hasMany('App\Item');
+    }
+
     use Notifiable;
 
     /**
@@ -36,4 +41,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 }
