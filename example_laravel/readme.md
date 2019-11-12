@@ -33,3 +33,30 @@ php artisan make:migration add_votes_to_users_table --table=users
 ```
 php artisan make:model Item
 ```
+
+## コントローラーの作成
+
+- 以下のコマンドで、コントローラーを作成する
+
+```
+php artisan make:controller OwnerController --resource
+```
+
+## Factoryの生成
+
+- 以下のコマンドでFactoryを生成する
+
+```
+php artisan make:factory PostFactory
+```
+
+___
+## TDD
+- このプロジェクトでは、TDDを採用して開発をすすめる
+
+
+### コントローラーのテストの生成
+
+```
+php artisan make:test UserControllerTest
+```
