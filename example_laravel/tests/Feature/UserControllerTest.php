@@ -8,17 +8,20 @@ use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
-    // use DatabaseTransactions;
-    // public function testIndex()
-    // {
-    //     $response = $this->get('/');
+    use RefreshDatabase;
 
-    //     $response->assertStatus(200);
-    // }
-    // public function setUp(): void
-    // {
-    //     parent::setUp();
-    // }
+    public function testGet()
+    {
+        $this->user = factory(\App\User::class)->create();
+        $response = $this->get(route('users.index'));
+        $response->assertStatus(200)
+                ->assertJsonFragment([
+                    'id' => $this->user->id,
+                    'email' => $this->user->email,
+                    'name' => $this->user->name,
+                    'point' => $this->user->point
+                ]);
+    }
 
     public function testCreate()
     {
