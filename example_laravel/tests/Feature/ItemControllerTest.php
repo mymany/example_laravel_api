@@ -21,4 +21,25 @@ class ItemControllerTest extends TestCase
                     'user_id' => $this->item->user_id,
                 ]);
     }
+
+    public function testCreate()
+    {
+        $this->user = factory(\App\User::class)->create();
+        $faker = \Faker\Factory::create();
+    
+        $data = [
+            'user_id' => $this->user->id,
+            'name' => $faker->name,
+            'point' => 100,
+        ];
+        $response = $this->post(route('items.store'), $data);
+
+        $response->assertStatus(200)
+                ->assertJson([
+                    'name' => $data['name'],
+                    'point' => $data['point'],
+                    'user_id' => $data['user_id'],
+                ]);
+        // $response->assertJsonCount($count, $key = null);
+    }
 }

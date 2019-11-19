@@ -37,7 +37,20 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $params = $request->input();
+        $item = new Item;
+        $item->user_id = $params['user_id'];
+        $item->name = $params['name'];
+        $item->point = $params['point'];
+        if ($item->save()) {
+            $response_json = [
+                'id' =>    $item->id,
+                'name' =>  $item->name,
+                'point' => $item->point,
+                'user_id' => $item->user_id
+            ];
+            return response()->json($response_json);
+        }
     }
 
     /**
