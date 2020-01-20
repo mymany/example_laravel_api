@@ -7,4 +7,5 @@ Route::group(['prefix' => 'v1'], function () {
     //     return $request->user();
     // });
     Route::resource('users', 'Api\V1\UserController');
+    Route::resource('items', 'Api\V1\ItemController');
 });
